@@ -26,6 +26,7 @@ import Foundation
     Why did we decide to use a Struct instead of a Class to represent a car model?
  
     (type here)
+    In Swift, instances of classes are passed by reference; instances of structs are passed by value. The original data will not change with structs because the instances hold copies of the variables that are passed.
  */
 
 
@@ -34,20 +35,33 @@ struct CarModel: Identifiable, Hashable {
     let id: String // DO NOT EDIT THIS. This is the model id, and is used by the UI.
     
     // TODO: complete the struct's implementation
+    var carBrand: CarBrand
+    var modelName: String
+    var topSpeed: Int
+    var color: String
+    var fuel: Int
     
+    init(id: String, carBrand: CarBrand, modelName: String, topSpeed: Int, color: String, fuel: Int) {
+            self.id = id
+            self.carBrand = carBrand
+            self.modelName = modelName
+            self.topSpeed = topSpeed
+            self.color = color
+            self.fuel = fuel
+    }
     
     // TODO: These are functions used by the UI to display the model's data, right now they return default values. Fix it such that it returns the correct value.
     
     func getBrandYear() -> String {
-        return "1920"
+        return carBrand.yearFounded
     }
     
     func getBrandFact() -> String {
-        return "Mercedes Benz invented the first gasoline-powered automobile."
+        return carBrand.carFact
     }
     
     func getBrandName() -> String {
-        return "Mercedes"
+        return carBrand.brandName
     }
     
     func getModelID() -> String {
@@ -55,19 +69,19 @@ struct CarModel: Identifiable, Hashable {
     }
     
     func getModelName() -> String {
-        return "G-Wagon"
+        return modelName
     }
     
     func getTopSpeed() -> Int {
-        return 120
+        return topSpeed
     }
     
     func getColor() -> String {
-        return "Red"
+        return color
     }
     
     func getFuel() -> Int {
-        return 100
+        return fuel
     }
     
 }
